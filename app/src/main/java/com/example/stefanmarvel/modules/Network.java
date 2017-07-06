@@ -1,6 +1,7 @@
 package com.example.stefanmarvel.modules;
 
 import com.example.stefanmarvel.network.MarvelApi;
+import com.example.stefanmarvel.network.MarvelInterceptor;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import dagger.Module;
@@ -43,6 +44,7 @@ public class Network {
             httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
             client = new OkHttpClient.Builder()
+                    .addInterceptor(new MarvelInterceptor())
                     .addInterceptor(httpLoggingInterceptor)
                     .build();
         }
