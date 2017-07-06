@@ -9,5 +9,5 @@ public class Comics {
     public ComicDate[] dates;
     public ComicPrice[] prices;
     public Images[] images;
-    public Images thumbNail;
+    public Images thumbnail;
 }
