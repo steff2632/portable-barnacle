@@ -1,5 +1,6 @@
 package com.example.stefanmarvel.fragments;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -31,6 +32,8 @@ public class ComicListFragment extends Fragment implements ComicsListView {
 
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
+
+    ProgressDialog progressDialog;
 
     private Unbinder unbinder;
     private ComicsAdapter comicsAdapter;
@@ -69,6 +72,7 @@ public class ComicListFragment extends Fragment implements ComicsListView {
     @Override
     public void onResume() {
         super.onResume();
+        progressDialog = ProgressDialog.show(getActivity(), getString(R.string.loading), "", true, false);
         presenter.getComicsList();
     }
 
@@ -91,5 +95,6 @@ public class ComicListFragment extends Fragment implements ComicsListView {
     public void setComics(Comics[] comics) {
         comicsAdapter.setComics(comics);
         comicsAdapter.notifyDataSetChanged();
+        progressDialog.hide();
     }
 }
