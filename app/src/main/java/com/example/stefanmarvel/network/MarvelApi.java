@@ -1,6 +1,6 @@
 package com.example.stefanmarvel.network;
 
-import com.example.stefanmarvel.models.Comics;
+import com.example.stefanmarvel.models.ComicDataWrapper;
 
 import io.reactivex.Observable;
 import io.reactivex.Single;
@@ -14,7 +14,7 @@ import retrofit2.http.Path;
 public interface MarvelApi {
 
     @GET("comics")
-    Single<Comics> getComics();
+    Single<ComicDataWrapper> getComics();
 
     @GET("comics/{comicId}")
     Observable getComics(@Path("comicId") int comicId);

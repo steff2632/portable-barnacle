@@ -7,7 +7,7 @@ import com.example.stefanmarvel.MarvelApp;
 import com.example.stefanmarvel.R;
 import com.example.stefanmarvel.components.AppComponent;
 import com.example.stefanmarvel.components.DaggerAppComponent;
-import com.example.stefanmarvel.models.Comics;
+import com.example.stefanmarvel.models.ComicDataWrapper;
 import com.example.stefanmarvel.modules.MarvelModule;
 import com.example.stefanmarvel.network.MarvelApi;
 
@@ -36,15 +36,15 @@ public class MainActivity extends AppCompatActivity {
 
         api.getComics().observeOn(AndroidSchedulers.mainThread())
                     .subscribeOn(Schedulers.io())
-                    .subscribe(new SingleObserver<Comics>() {
+                    .subscribe(new SingleObserver<ComicDataWrapper>() {
                         @Override
                         public void onSubscribe(@NonNull Disposable d) {
 
                         }
 
                         @Override
-                        public void onSuccess(@NonNull Comics comics) {
-                            System.out.println(comics.title);
+                        public void onSuccess(@NonNull ComicDataWrapper cdw) {
+                            System.out.println(cdw.data.results[0].title);
                         }
 
                         @Override

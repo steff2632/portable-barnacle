@@ -7,7 +7,7 @@ package com.example.stefanmarvel.models;
 public class Comics {
     public String title;
     public ComicDate[] dates;
-    public ComicPrice prices;
+    public ComicPrice[] prices;
     public Images[] images;
     public Images thumbNail;
 }
