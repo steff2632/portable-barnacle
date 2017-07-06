@@ -56,6 +56,7 @@ public class ComicsListPresenter {
                     @Override
                     public void onError(@NonNull Throwable e) {
                         e.printStackTrace();
+                        view.setError(e.getMessage());
                     }
                 });
     }
