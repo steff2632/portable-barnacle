@@ -13,7 +13,7 @@ import retrofit2.http.Path;
 
 public interface MarvelApi {
 
-    @GET("comics")
+    @GET("comics?limit=100")
     Single<ComicDataWrapper> getComics();
 
     @GET("comics/{comicId}")

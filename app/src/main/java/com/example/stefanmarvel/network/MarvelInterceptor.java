@@ -3,6 +3,7 @@ package com.example.stefanmarvel.network;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Set;
 
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
@@ -34,6 +35,12 @@ public class MarvelInterceptor implements Interceptor {
             builder.host(original.host());
             builder.encodedPath(original.encodedPath());
             builder.scheme(original.scheme());
+
+            Set<String> queries = original.queryParameterNames();
+
+            for(int i = 0; i < queries.size(); i++) {
+                builder.addEncodedQueryParameter(original.queryParameterName(i), original.queryParameterValue(i));
+            }
 
             builder.addQueryParameter("ts", timeStamp);
             builder.addQueryParameter("apikey", publicKey);
